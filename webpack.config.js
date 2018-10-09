@@ -14,7 +14,29 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: ['babel-loader']
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.(scss|sass)$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader:'css-loader',
+                        options: {
+                            modules:true,
+                            camelCase: true,
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap : true,
+                        }
+                    }
+                ]
             }
         ]
     },
